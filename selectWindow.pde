@@ -13,9 +13,9 @@ boolean delete = false;
 
 //PImage img;
 
-ArrayList quads = new ArrayList<int[]>();
+ArrayList<int[]> quads = new ArrayList<int[]>();
 
-ArrayList current = new ArrayList<Integer>();
+ArrayList<Integer> current = new ArrayList<Integer>();
 
 PImage edgeImage;
 
@@ -37,7 +37,6 @@ void setup() {
 
 void draw() {
   
-  drawMovers();
   // Draw the buttons
   stroke(255);
   fill(255);
@@ -50,12 +49,19 @@ void draw() {
   text("undo", 10, 50);
   text("save", 200, 50);
 
+  drawMovers();
+  drawWindows();
+}
+
+void drawWindows(){
   stroke(0);
+  fill(0);
   
   for (int i = quads.size() - 1; i >= 0; i--) {
     int[] q = (int []) quads.get(i);
     quad(q[0],q[1],q[2],q[3],q[4],q[5],q[6],q[7]);
   }  
+
 }
 
 

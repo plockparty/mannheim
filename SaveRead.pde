@@ -26,7 +26,7 @@ ArrayList<int[]> loadQuads() {
       }
     System.out.println(quad);
 
-    qArray.add(quad);      //<>//
+    qArray.add(quad);     
   }
-  return qArray; //<>//
+  return qArray;
 }
