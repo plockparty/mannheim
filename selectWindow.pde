@@ -11,6 +11,12 @@ int rectColor;
 
 boolean delete = false;
 
+boolean edit = false;
+boolean animals_show = false;
+boolean movers_show = false;
+boolean explode_show = false;
+
+
 //PImage img;
 
 ArrayList<int[]> quads = new ArrayList<int[]>();
@@ -22,22 +28,72 @@ PImage edgeImage;
 //int width = 3574;
 //int height = 2273;
 
+void keyPressed() {
+  if(key == 'e'){
+    edit = !edit;
+  }
+  
+  if(key == 'm'){
+    setupMovers();
+    movers_show = !movers_show;
+  }
+
+  if(key == 'a'){
+    animals_show = !animals_show;
+    setupAnimals();
+  }
+  
+  if(key == 'x'){
+    explode_show = !explode_show;
+    setupExplode();
+  }
+  
+  if(key=='r') {
+  image(edgeImage, 0, 0); // Draw the new image
+  }
+
+}
+
+
 void setup() {
-  size(3574, 2273);
+  size(3574, 2273, P3D);
   //img = loadImage("../haus.jpg"); // Load the original image
   rectColor = color(0);
   quads = loadQuads();
   //frameRate(1);
   //image(img,0,0);
   edgeImage = drawBackground();
-    image(edgeImage, 0, 0); // Draw the new image
-
-  setupMovers();
+  image(edgeImage, 0, 0); // Draw the new image
+  //setupExplode();
+  //setupMovers();
+  //setupAnimals();
+  
+  
 }
+
 
 void draw() {
   
-  // Draw the buttons
+  if(edit) {
+    drawButtons();
+  }  
+
+  if(movers_show) {
+    drawMovers();
+  }
+  if(animals_show) {
+  drawAnimals();
+  }
+  
+  if(explode_show){  
+     drawExplode();
+  }
+  
+  drawWindows();
+  }
+
+void drawButtons() {
+    // Draw the buttons
   stroke(255);
   fill(255);
   rect(saveX, saveY, saveSize, saveSize);
@@ -49,11 +105,10 @@ void draw() {
   text("undo", 10, 50);
   text("save", 200, 50);
 
-  drawMovers();
-  drawWindows();
 }
 
 void drawWindows(){
+  strokeWeight(1);
   stroke(0);
   fill(0);
   
@@ -66,6 +121,8 @@ void drawWindows(){
 
 
 void mousePressed() {
+  if(edit) {
+  
   if(overRect(undoX, undoY, undoSize, undoSize)) {
     delete = !delete;
   }
@@ -89,7 +146,9 @@ void mousePressed() {
       current = new ArrayList();
     }
   }
+  }
 }
+
 
 public static int[] convertIntegers(ArrayList<Integer> integers)
 {

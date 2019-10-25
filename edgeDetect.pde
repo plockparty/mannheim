@@ -7,9 +7,10 @@ float[][] kernel =
   //                  { -1,  8.5, -1}, 
    //                 { -1, -1, -1}};
                     
-PImage img;
 
 PImage drawBackground() {
+  PImage img;
+
   img = loadImage("../haus.jpg"); // Load the original image
   //image(img, 0, 0); // Displays the image from point (0,0) 
   img.loadPixels();
