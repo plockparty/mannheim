@@ -20,6 +20,8 @@ boolean windows_show = true;
 
 PImage img;
 
+int frames = 0;
+
 ArrayList<int[]> quads = new ArrayList<int[]>();
 
 ArrayList<Integer> current = new ArrayList<Integer>();
@@ -104,6 +106,10 @@ void draw() {
   }
   
   if(explode_show){  
+    if (frames < 1000) {
+      frames += 1;
+      saveFrame("explode-#####.jpg");
+  }
      drawExplode();
   }
   

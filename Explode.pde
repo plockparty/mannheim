@@ -29,7 +29,7 @@ void drawExplode() {
   background(0);
   float w_center =  img.width/2;
   float h_center =  img.height/2;
-  explodeTime +=0.01;
+  explodeTime +=0.003;
   //for ( int i = current_width; i < Math.min(current_width + width_per_frame, img.width); i++) {
   for ( int i = 0; i < img.width; i++) {
     // Begin loop for rows

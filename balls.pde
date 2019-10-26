@@ -6,7 +6,7 @@ Ball[] balls = new Ball[numBalls];
 
 void setupBalls() {
   for (int i = 0; i < numBalls; i++) {
-    balls[i] = new Ball(random(width), random(0,100), random(80, 100), i, balls);
+    balls[i] = new Ball(random(width), random(height), random(80, 100), i, balls);
   }
 }
 
