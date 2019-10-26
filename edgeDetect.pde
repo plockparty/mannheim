@@ -8,10 +8,8 @@ float[][] kernel =
    //                 { -1, -1, -1}};
                     
 
-PImage drawBackground() {
-  PImage img;
+PImage createEdgeImage() {
 
-  img = loadImage("../haus.jpg"); // Load the original image
   //image(img, 0, 0); // Displays the image from point (0,0) 
   img.loadPixels();
   // Create an opaque image of the same size as the original

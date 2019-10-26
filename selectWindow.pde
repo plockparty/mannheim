@@ -15,9 +15,10 @@ boolean edit = false;
 boolean animals_show = false;
 boolean movers_show = false;
 boolean explode_show = false;
+boolean balls_show = false;
+boolean windows_show = true;
 
-
-//PImage img;
+PImage img;
 
 ArrayList<int[]> quads = new ArrayList<int[]>();
 
@@ -48,6 +49,16 @@ void keyPressed() {
     setupExplode();
   }
   
+  if(key == 'b'){
+    balls_show = !balls_show;
+    setupBalls();
+  }
+
+  if(key == 'w'){
+    windows_show = !windows_show;
+  }
+
+  
   if(key=='r') {
   image(edgeImage, 0, 0); // Draw the new image
   }
@@ -57,18 +68,21 @@ void keyPressed() {
 
 void setup() {
   size(3574, 2273, P3D);
+
+  //size(3574, 2273);
   //img = loadImage("../haus.jpg"); // Load the original image
   rectColor = color(0);
   quads = loadQuads();
   //frameRate(1);
   //image(img,0,0);
-  edgeImage = drawBackground();
+  img = loadImage("../haus.jpg"); // Load the original image
+
+  edgeImage = createEdgeImage();
   image(edgeImage, 0, 0); // Draw the new image
   //setupExplode();
   //setupMovers();
   //setupAnimals();
-  
-  
+   
 }
 
 
@@ -77,6 +91,10 @@ void draw() {
   if(edit) {
     drawButtons();
   }  
+
+  if(balls_show) {
+    drawBalls();
+  }
 
   if(movers_show) {
     drawMovers();
@@ -89,7 +107,10 @@ void draw() {
      drawExplode();
   }
   
-  drawWindows();
+  if(windows_show) {
+    drawWindows();
+  
+  }
   }
 
 void drawButtons() {
